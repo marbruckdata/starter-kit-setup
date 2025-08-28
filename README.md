@@ -68,7 +68,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 ```
 - check Home.vue for template
-```vuejs
+```javascript
 <script setup>
 import { Head } from '@inertiajs/vue3'
 import Default from "@/Layouts/Default.vue";
