@@ -8,6 +8,7 @@
 - composer require inertiajs/inertia-laravel
 - root template see "app.blade.php"
 ```php
+<?php
 <!doctype html>
 <html lang="en">
 <head>
