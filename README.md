@@ -12,7 +12,7 @@
 - php artisan inertia:middleware
 - check bootstrap/app.js
 
-```
+```php
 <?php
 
 use App\Http\Middleware\HandleInertiaRequests;
