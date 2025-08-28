@@ -108,11 +108,6 @@ class HomeController extends Controller
 - npm install @inertiajs/vue3
 - check resources/js/app.js
 ```javascript
-import { modal } from 'momentum-modal'
-import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
-
-const appName = import.meta.env.VITE_APP_NAME
-
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: name => {
@@ -122,9 +117,6 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(modal, {
-                resolve: (name) => resolvePageComponent(`./Modals/${name}.vue`, import.meta.glob(`./Modals/**/*.vue`))
-            })
             .mount(el)
     },
 })
