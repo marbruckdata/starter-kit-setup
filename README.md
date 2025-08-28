@@ -108,18 +108,82 @@ class HomeController extends Controller
 ### Frontend Inertiajs
 - npm install @inertiajs/vue3
 - check resources/js/app.js
+```javascript
+import { modal } from 'momentum-modal'
+import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
+
+const appName = import.meta.env.VITE_APP_NAME
+
+createInertiaApp({
+    title: (title) => `${title} - ${appName}`,
+    resolve: name => {
+        const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
+        return pages[`./Pages/${name}.vue`]
+    },
+    setup({ el, App, props, plugin }) {
+        createApp({ render: () => h(App, props) })
+            .use(plugin)
+            .use(modal, {
+                resolve: (name) => resolvePageComponent(`./Modals/${name}.vue`, import.meta.glob(`./Modals/**/*.vue`))
+            })
+            .mount(el)
+    },
+})
+```
 - npm i @vitejs/plugin-vue (optional???)
 - check vite.config.js
+```javascript
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+import vue from '@vitejs/plugin-vue';
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: ['resources/css/app.css', 'resources/js/app.js'],
+            refresh: true,
+        }),
+        vue({}),
+    ],
+});
+```
 
 ### Install TailwindCSS
 - npm install tailwindcss @tailwindcss/vite
 - check vite.config.ts
+```javascript
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+import vue from '@vitejs/plugin-vue';
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: ['resources/css/app.css', 'resources/js/app.js'],
+            refresh: true,
+        }),
+        vue({}),
+        tailwindcss(), // This line is new
+
+    ],
+});
+```
 - check ./resources/css/app.css
 - check app.blade.php
 
 ### Install Tailwind Forms
 - npm install -D @tailwindcss/forms
 - check app.css
+```css
+@import 'tailwindcss';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@plugin "@tailwindcss/forms"; // This line is new
+```
 
 ### Install Fortify
 - composer require laravel/fortify
