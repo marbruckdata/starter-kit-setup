@@ -70,9 +70,6 @@ Route::get('/', HomeController::class)->name('home');
 ```javascript
 <script setup>
 import { Head } from '@inertiajs/vue3'
-import Default from "@/Layouts/Default.vue";
-
-defineOptions({ layout: Default })
 </script>
 
 <template>
