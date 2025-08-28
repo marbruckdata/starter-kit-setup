@@ -26,9 +26,13 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
+
+    // EDIT THIS HERE START
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->web(append:[HandleInertiaRequests::class]);
     })
+    // EDIT THIS HERE END
+
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
