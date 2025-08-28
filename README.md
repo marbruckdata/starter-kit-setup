@@ -61,7 +61,6 @@ return Application::configure(basePath: dirname(__DIR__))
 ```php
 <?php
 
-use App\Http\Controllers\Auth\RegisterIndexController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
