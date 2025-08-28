@@ -7,8 +7,7 @@
 ### Server-Side Inertiajs
 - composer require inertiajs/inertia-laravel
 - root template see "app.blade.php"
-```php
-<?php
+```html
 <!doctype html>
 <html lang="en">
 <head>
