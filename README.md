@@ -88,6 +88,20 @@ defineOptions({ layout: Default })
 
 ```
 - check HomeController.php
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class HomeController extends Controller
+{
+    public function __invoke(){
+        return inertia()->render('Home');
+    }
+}
+```
 - npm install
 - npm run dev
 
