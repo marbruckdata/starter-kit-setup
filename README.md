@@ -162,7 +162,13 @@ export default defineConfig({
 });
 ```
 - check ./resources/css/app.css
-- check app.blade.php
+```css
+@import 'tailwindcss';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+``` 
 
 ### Install Tailwind Forms
 - npm install -D @tailwindcss/forms
