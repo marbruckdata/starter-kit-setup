@@ -58,7 +58,35 @@ return Application::configure(basePath: dirname(__DIR__))
 ### Setup Controller, Route, and Vue template
 - php artisan make:controller HomeController
 - check web.php for route
+```php
+<?php
+
+use App\Http\Controllers\Auth\RegisterIndexController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', HomeController::class)->name('home');
+```
 - check Home.vue for template
+```vuejs
+<script setup>
+import { Head } from '@inertiajs/vue3'
+import Default from "@/Layouts/Default.vue";
+
+defineOptions({ layout: Default })
+</script>
+
+<template>
+    <div>
+        Hello
+    </div>
+</template>
+
+<style scoped>
+
+</style>
+
+```
 - check HomeController.php
 - npm install
 - npm run dev
