@@ -105,8 +105,12 @@ class HomeController extends Controller
 - npm install @inertiajs/vue3
 - check resources/js/app.js
 ```javascript
+import './bootstrap';
+
+import { createApp, h } from 'vue'
+import { createInertiaApp } from '@inertiajs/vue3'
+
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
     resolve: name => {
         const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
         return pages[`./Pages/${name}.vue`]
